@@ -1,0 +1,5 @@
+0.01  Not Released
+  - Implements mail endpoint
+  - Behaves non-blocking if event has subscribers
+  - Provides a Mojolicious::Command
+  - Provides a Mojolicious::Plugin
