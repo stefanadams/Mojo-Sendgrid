@@ -11,7 +11,7 @@ use Mojo::Sendgrid;
 my $sendgrid = Mojo::Sendgrid->new;
 my $send = $sendgrid->mail(to=>q(x@y.com),from=>q(x@y.com),subject=>time,text=>time)->send;
 
-$sendgrid->on(sendgrid_mail_send => sub {
+$sendgrid->on(mail_send => sub {
   my ($sendgrid, $ua, $tx) = @_;
   say $tx->res->body;
 });
