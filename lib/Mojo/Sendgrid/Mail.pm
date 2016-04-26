@@ -36,7 +36,7 @@ sub send {
 # Create the hash to be supplied to the form option of Mojo::UserAgent
 sub _form {
   my $self = shift->_require_one;
-  return {map {$_=>$self->$_} grep {$self->$_} @{$parameters{send}{required}}, @{$parameters{send}{optional}}};
+  return {map {($_=~s/_/-/r)=>$self->$_} grep {$self->$_} @{$parameters{send}{required}}, @{$parameters{send}{optional}}};
 }
 
 # I don't know how else to enforce requiring at least one attribute of a group
@@ -147,7 +147,7 @@ Content IDs of the files to be used as inline images.
 
 A collection of key/value pairs in JSON format.
 
-=head2 x-smtpapi
+=head2 x_smtpapi
 
 Please review the SMTP API to view documentation on what you can do with the
 JSON headers.
