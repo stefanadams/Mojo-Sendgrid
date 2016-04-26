@@ -1,3 +1,6 @@
+0.02 Not released
+  - Object system wants "x_smtpapi" but API wants "x-smtpapi" to work
+
 0.01 2016-03-25T09:48:28-0500
   - Implements mail endpoint
   - Behaves non-blocking if event has subscribers
