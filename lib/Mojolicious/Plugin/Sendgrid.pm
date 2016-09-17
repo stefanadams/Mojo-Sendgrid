@@ -8,7 +8,7 @@ sub register {
 
   push @{$app->commands->namespaces}, 'Mojo::Sendgrid::Command';
 
-  my $sendgrid = Mojo::Sendgrid->new(each %$conf);
+  my $sendgrid = Mojo::Sendgrid->new($app->config('sendgrid') || each %$conf);
   $app->helper(sendgrid => sub {$sendgrid});
 }
 
