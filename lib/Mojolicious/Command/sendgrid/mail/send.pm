@@ -9,7 +9,7 @@ use Getopt::Long qw(GetOptionsFromArray :config no_auto_abbrev no_ignore_case);
 has description => 'sendgrid mail send';
 has usage => sub { shift->extract_usage };
 
-has sendgrid => sub { Mojo::Sendgrid->new };
+has sendgrid => sub { Mojo::Sendgrid->new(config => shift->app->config('sendgrid')) };
 
 sub run {
   my ($self, @args) = @_;
