@@ -3,13 +3,11 @@ use Test::Mojo;
 use Mojolicious::Lite;
 use Mojo::Sendgrid;
 
-$ENV{SENDGRID_APIURL} = '/dummy';
-
 my $t = Test::Mojo->new;
-my $sendgrid = Mojo::Sendgrid->new(config => {apikey => 'kjwhef'});
+my $sendgrid = Mojo::Sendgrid->new(apikey => 'kjwhef', apiurl => '/dummy');
 my $res;
 
-post '/dummy' => sub {shift->render(json => {message => 'success'}) };
+post $sendgrid->apiurl => sub {shift->render(json => {message => 'success'}) };
 
 $sendgrid->once(mail_send => sub {
   my ($sendgrid, $ua, $tx) = @_;
@@ -22,7 +20,7 @@ $sendgrid->mail(
   from=>q(x@y.com),
   subject=>time,
   text=>time
-)->send;
+)->send and diag 'Email sent';
 
 Mojo::IOLoop->start;
 

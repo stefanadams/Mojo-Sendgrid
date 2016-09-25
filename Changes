@@ -1,3 +1,6 @@
+0.04 2016-09-25T15:40:16-0500
+  - Simplify configuration
+
 0.03 2016-09-25T14:29:23-0500
   - Use app's config if available
   - Print json response via Dumper
