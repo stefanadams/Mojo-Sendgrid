@@ -4,12 +4,13 @@ use Mojo::Base 'Mojolicious::Command';
 use Mojo::JSON 'j';
 use Mojo::Sendgrid;
 
+use Data::Dumper;
 use Getopt::Long qw(GetOptionsFromArray :config no_auto_abbrev no_ignore_case);
 
 has description => 'sendgrid mail send';
 has usage => sub { shift->extract_usage };
 
-has sendgrid => sub { Mojo::Sendgrid->new(config => shift->app->config('sendgrid')) };
+has sendgrid => sub { Mojo::Sendgrid->new(config => shift->app->config('sendgrid') || {}) };
 
 sub run {
   my ($self, @args) = @_;
@@ -21,7 +22,7 @@ sub run {
 
   die $self->usage unless $to && $from && $subject;
 
-  say j($self->sendgrid->mail(to=>$to,from=>$from,subject=>$subject,text=>join("\n",<STDIN>))->send->res->json);
+  say Data::Dumper::Dumper $self->sendgrid->mail(to=>$to,from=>$from,subject=>$subject,text=>join("\n",<STDIN>))->send->res->json;
 }
 
 1;

@@ -1,4 +1,6 @@
 0.03 Not Released
+  - Use app's config if available
+  - Print json response via Dumper
 
 0.02 2016-04-26T00:01:00-0500
   - Object system wants "x_smtpapi" but API wants "x-smtpapi" to work
