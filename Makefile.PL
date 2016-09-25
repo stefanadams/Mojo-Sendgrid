@@ -2,7 +2,7 @@
 use ExtUtils::MakeMaker;
 WriteMakefile(
   NAME => 'Mojo::Sendgrid',
-  AUTHOR => 'Stefan Adams <sadams@cpan.org>',
+  AUTHOR => 'Stefan Adams <s1037989@gmail.com>',
   LICENSE => 'artistic_2',
   ABSTRACT_FROM => 'lib/Mojo/Sendgrid.pm',
   VERSION_FROM => 'lib/Mojo/Sendgrid.pm',
@@ -19,7 +19,8 @@ WriteMakefile(
 }
 ,
   PREREQ_PM => {
-  'Mojolicious' => '6.00'
+  'Mojolicious' => '6.00',
+  'perl' => 'v5.14.0'
 }
 ,
   test => {TESTS => (-e 'META.yml' ? 't/*.t' : 't/*.t xt/*.t')},

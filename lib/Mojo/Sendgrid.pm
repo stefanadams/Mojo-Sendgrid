@@ -3,7 +3,7 @@ use Mojo::Base 'Mojo::EventEmitter';
 
 use Mojo::Sendgrid::Mail;
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 has config => sub { {} };
 has apikey => sub { $ENV{SENDGRID_APIKEY} || shift->config->{apikey} or die "config apikey missing" };
@@ -21,7 +21,7 @@ Mojo::Sendgrid - Sendgrid API implementation for the Mojolicious framework
 
 =head1 VERSION
 
-0.02
+0.03
 
 =head1 SYNOPSIS
 
